@@ -7,7 +7,7 @@
     <meta name="description" content="明月装饰了你的窗子，你装饰了别人的梦。">
     <link rel="icon" href="img/myBlog.png">
     
-    <link rel="preload" href="/assets/css/0.styles.4213a86a.css" as="style"><link rel="preload" href="/assets/js/app.1f22ffa7.js" as="script"><link rel="preload" href="/assets/js/7.ba6f1d19.js" as="script"><link rel="prefetch" href="/assets/js/2.7974f97d.js"><link rel="prefetch" href="/assets/js/3.88d894a9.js"><link rel="prefetch" href="/assets/js/4.941e190e.js"><link rel="prefetch" href="/assets/js/5.ecbfeedb.js"><link rel="prefetch" href="/assets/js/6.7a40a9e0.js"><link rel="prefetch" href="/assets/js/8.e6178035.js">
+    <link rel="preload" href="/assets/css/0.styles.4213a86a.css" as="style"><link rel="preload" href="/assets/js/app.a15ee398.js" as="script"><link rel="preload" href="/assets/js/7.e3890370.js" as="script"><link rel="prefetch" href="/assets/js/2.7974f97d.js"><link rel="prefetch" href="/assets/js/3.88d894a9.js"><link rel="prefetch" href="/assets/js/4.941e190e.js"><link rel="prefetch" href="/assets/js/5.ecbfeedb.js"><link rel="prefetch" href="/assets/js/6.7a40a9e0.js"><link rel="prefetch" href="/assets/js/8.e6178035.js">
     <link rel="stylesheet" href="/assets/css/0.styles.4213a86a.css">
   </head>
   <body>
@@ -52,9 +52,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">typeof</span> Object<span class="token punctuation">.</span>prototype<span class="token punctuation">)</span>   <span class="token comment">// object</span>
 </code></pre></div><hr> <div class="language-js extra-class"><pre class="language-js"><code>console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Function<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>__proto__ <span class="token operator">===</span> Object<span class="token punctuation">.</span>prototype<span class="token punctuation">)</span> <span class="token comment">// true</span>
 </code></pre></div><hr> <p>那么Object.prototype的__proto__是谁？</p> <div class="language-js extra-class"><pre class="language-js"><code>Object<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>__proto__ <span class="token operator">===</span> <span class="token keyword">null</span>  <span class="token comment">// true</span>
-</code></pre></div><p>已经到顶了，为null。
-<img src="/img/proto.png" alt="prototype">
-实例对象和构造函数都可以指向原型。</p> <h3 id="_4-constructor："><a href="#_4-constructor：" aria-hidden="true" class="header-anchor">#</a> 4.<code>constructor</code>：</h3> <p>每个原型都有一个 constructor 属性指向关联的构造函数：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+</code></pre></div><p>已经到顶了，为null。</p> <p><img src="/img/proto.png" alt="prototype"></p> <p>实例对象和构造函数都可以指向原型。</p> <h3 id="_4-constructor："><a href="#_4-constructor：" aria-hidden="true" class="header-anchor">#</a> 4.<code>constructor</code>：</h3> <p>每个原型都有一个 constructor 属性指向关联的构造函数：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
 
 <span class="token punctuation">}</span>
 console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>Person <span class="token operator">===</span> Person<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>constructor<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// true</span>
@@ -120,6 +118,6 @@ console<span class="token punctuation">.</span><span class="token function">log<
         <a href="/webLibrary/childrenLibrary/commonAlgorithm.html" class="prev">
           js常用算法
         </a></span> <!----></p></div> </div> <!----></div></div>
-    <script src="/assets/js/app.1f22ffa7.js" defer></script><script src="/assets/js/7.ba6f1d19.js" defer></script>
+    <script src="/assets/js/app.a15ee398.js" defer></script><script src="/assets/js/7.e3890370.js" defer></script>
   </body>
 </html>

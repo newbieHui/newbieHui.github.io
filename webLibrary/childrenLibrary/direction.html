@@ -7,7 +7,7 @@
     <meta name="description" content="明月装饰了你的窗子，你装饰了别人的梦。">
     <link rel="icon" href="img/myBlog.png">
     
-    <link rel="preload" href="/assets/css/0.styles.4213a86a.css" as="style"><link rel="preload" href="/assets/js/app.8d896682.js" as="script"><link rel="preload" href="/assets/js/13.dee8a033.js" as="script"><link rel="prefetch" href="/assets/js/10.d7a1ed53.js"><link rel="prefetch" href="/assets/js/11.94ddadb5.js"><link rel="prefetch" href="/assets/js/12.4c047dbc.js"><link rel="prefetch" href="/assets/js/14.2d5d62ff.js"><link rel="prefetch" href="/assets/js/15.b6af3c66.js"><link rel="prefetch" href="/assets/js/2.8ed4b70e.js"><link rel="prefetch" href="/assets/js/3.20220c89.js"><link rel="prefetch" href="/assets/js/4.c170e747.js"><link rel="prefetch" href="/assets/js/5.8b71b268.js"><link rel="prefetch" href="/assets/js/6.8a2fb59a.js"><link rel="prefetch" href="/assets/js/7.96a38748.js"><link rel="prefetch" href="/assets/js/8.b3114112.js"><link rel="prefetch" href="/assets/js/9.934ceb04.js">
+    <link rel="preload" href="/assets/css/0.styles.4213a86a.css" as="style"><link rel="preload" href="/assets/js/app.0568c91f.js" as="script"><link rel="preload" href="/assets/js/13.da5cb51f.js" as="script"><link rel="prefetch" href="/assets/js/10.d7a1ed53.js"><link rel="prefetch" href="/assets/js/11.94ddadb5.js"><link rel="prefetch" href="/assets/js/12.4c047dbc.js"><link rel="prefetch" href="/assets/js/14.2d5d62ff.js"><link rel="prefetch" href="/assets/js/15.b6af3c66.js"><link rel="prefetch" href="/assets/js/2.8ed4b70e.js"><link rel="prefetch" href="/assets/js/3.20220c89.js"><link rel="prefetch" href="/assets/js/4.c170e747.js"><link rel="prefetch" href="/assets/js/5.8b71b268.js"><link rel="prefetch" href="/assets/js/6.8a2fb59a.js"><link rel="prefetch" href="/assets/js/7.96a38748.js"><link rel="prefetch" href="/assets/js/8.b3114112.js"><link rel="prefetch" href="/assets/js/9.934ceb04.js">
     <link rel="stylesheet" href="/assets/css/0.styles.4213a86a.css">
   </head>
   <body>
@@ -74,11 +74,41 @@ demo<span class="token punctuation">.</span>y<span class="token punctuation">.</
 
 demo<span class="token punctuation">.</span><span class="token function">x</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre></div><p><img src="/img/nesting.png" alt="nesting"></p> <p>如上图，在嵌套函数gexX()中，this并不指向demo。嵌套的函数不会从调用它的函数中继承this，当嵌套函数作为函数调用时，其this值在非严格模式下
-指向全局对象，严格模式下为undefined。</p></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
+指向全局对象，严格模式下为undefined。</p> <h3 id="_3-作为构造函数调用："><a href="#_3-作为构造函数调用：" aria-hidden="true" class="header-anchor">#</a> 3.作为构造函数调用：</h3> <p>1.在构造函数中使用new生成一个新对象，此时，this就指向这个新对象：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">function</span> <span class="token function">demo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+	<span class="token keyword">this</span><span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">demo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">//1</span>
+</code></pre></div><hr> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token keyword">function</span> <span class="token function">demo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">demo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 2</span>
+</code></pre></div><p>由上图代码我们可以看出全局对象x的值并没有改变。</p> <p>2.如果构造函数返回了一个对象，this 便会指向返回的对象，如果构造函数返回了非引用类型（string，number，boolean，null，undefined），this 仍然指向实例化的新对象：</p> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token keyword">function</span> <span class="token function">Demo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token punctuation">{</span>
+    x<span class="token punctuation">:</span> <span class="token number">3</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Demo</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 3</span>
+</code></pre></div><hr> <div class="language-js extra-class"><pre class="language-js"><code><span class="token keyword">var</span> x <span class="token operator">=</span> <span class="token number">1</span>
+<span class="token keyword">function</span> <span class="token function">Demo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>x <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+  <span class="token keyword">return</span> <span class="token number">3</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Demo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>a<span class="token punctuation">.</span>x<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 2</span>
+</code></pre></div><blockquote><p>2019/3/11 08:35</p></blockquote></div> <div class="page-edit"><!----> <!----></div> <div class="page-nav"><p class="inner"><span class="prev">
         ←
         <a href="/webLibrary/childrenLibrary/prototypeChain.html" class="prev">
           js原型与原型链
         </a></span> <!----></p></div> </div> <!----></div></div>
-    <script src="/assets/js/app.8d896682.js" defer></script><script src="/assets/js/13.dee8a033.js" defer></script>
+    <script src="/assets/js/app.0568c91f.js" defer></script><script src="/assets/js/13.da5cb51f.js" defer></script>
   </body>
 </html>
